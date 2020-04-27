@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intelligent Routing</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="mediumseagreen" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="globe-192.png" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      html {
+        background: url(https://thedailybanter.com/.image/t_share/MTM2NjQ0ODcwNjYyMDcxOTAz/moon-earth-planet-wallpapers-landscape.jpg)
+          no-repeat center fixed;
+        background-size: cover;
+        color: rgb(4, 41, 12);
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        margin: 0;
+        max-width: 1000px;
+        margin: auto;
+        padding: 10px;
+        max-height: 100%;
+      }
+    </style>
+    <script>
+      navigator.serviceWorker.register("sw.js");
+    </script>
+  </head>
+  <body>
+    <form
+      id="form"
+      action="mymap.html"
+      class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin"
+      align="center"
+    >
+      <h2 class="w3-center">Intelligent Routing</h2>
+
+      <div class="w3-row w3-section">
+        <div class="w3-col" style="width: 50px;">
+          <img src="src_6.png" height="50" alt="SC" />
+        </div>
+        <div class="w3-rest">
+          <input
+            class="w3-input w3-border"
+            name="first"
+            id="first"
+            type="text"
+            placeholder="Source"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="w3-row w3-section">
+        <div class="w3-col" style="width: 50px;">
+          <img src="flag.png" height="50" alt="DS" />
+        </div>
+        <div class="w3-rest">
+          <input
+            class="w3-input w3-border"
+            name="last"
+            id="last"
+            type="text"
+            placeholder="Destination"
+            required
+          />
+        </div>
+      </div>
+      <button
+        type="submit"
+        id="search"
+        class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding"
+        onclick="submitForm()"
+      >
+        Search
+      </button>
+
+      <footer>
+        Copyright &copy; Bogdan-Cristian Firuti and Razvan-Stefan Paduraru
+      </footer>
+    </form>
+    <script>
+      function submitForm() {
+        if (typeof localStorage != "undefined") {
+          localStorage.src = document.getElementById("first").value;
+          localStorage.dst = document.getElementById("last").value;
+        }
+        document.getElementById("form").submit();
+      }
+    </script>
+  </body>
+</html>

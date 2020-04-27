@@ -1,0 +1,20 @@
+{
+  "name": "Intelligent Routing",
+  "theme_color": "mediumseagreen",
+  "display": "standalone",
+  "short_name": "Intelligent Routing",
+  "background_color": "#f0f0f0",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "globe-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "globe-192.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
