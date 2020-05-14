@@ -182,7 +182,14 @@
                 Math.floor(len / 2)
               ];
 
-              console.log(len, dirs.getDirections().routes[i].overview_path);
+              const coord = {
+                lat: dirs.getDirections().routes[i].overview_path[0].toJSON()
+                  .lat,
+                lng: dirs.getDirections().routes[i].overview_path[0].toJSON()
+                  .lng,
+              };
+
+              console.log(coord, len);
               const content =
                 "Total distance: " +
                 dirs.getDirections().routes[i].legs[0].distance.text +
