@@ -6,49 +6,37 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
       #map {
         height: 800px;
       }
       html {
         background-color: black;
       }
-      .button {
-        background-color: #4caf50; /* Green */
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
+      button {
+        background-color: white;
+        color: #000080;
+        padding: 12px 22px;
+        border: 2px solid #000080;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        margin: 0 0;
       }
-
-      .button2 {
-        background-color: #008cba;
-      } /* Blue */
+      button:hover {
+        background-color: #000080;
+        color: white;
+      }
     </style>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
   </head>
   <body>
     <div id="map"></div>
     <div>
       <button id="myButton" class="button button2">
-        Home
+        Back
       </button>
     </div>
 
-    <!-- <button id="myButton" class="float-left submit-button">Home</button> -->
     <script type="text/javascript">
       document.getElementById("myButton").onclick = function () {
-        location.href = "layout.html";
+        location.href = "http://localhost:5050/#content";
       };
     </script>
     <script>

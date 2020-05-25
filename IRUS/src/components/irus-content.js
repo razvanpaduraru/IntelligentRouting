@@ -18,7 +18,7 @@ class IrusContent extends LitElement {
       select {
         width: 100%;
         font-size: 18px;
-        padding: 16px 20px;
+        padding: 14px 18px;
         border-radius: 4px;
         background-color: white;
         color: black;
@@ -27,6 +27,18 @@ class IrusContent extends LitElement {
 
       main {
         padding: 2rem;
+      }
+
+      button {
+        background-color: white;
+        color: black;
+        padding: 12px 22px;
+        border: 2px solid black;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+      }
+      button:hover {
+        background-color: black;
+        color: white;
       }
     `;
   }
@@ -57,12 +69,18 @@ class IrusContent extends LitElement {
             >
           </select>
         </nav>
+        <button @click=${this._onGoBack}>Back</button>
       </header>
 
       <main>
         ${this._pageTemplate}
       </main>
     `;
+  }
+
+  _onGoBack(event) {
+    event.preventDefault();
+    window.location.href = "http://localhost:5050/#";
   }
 
   _onChangeMenu(event) {
