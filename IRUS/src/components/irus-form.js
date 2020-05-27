@@ -99,6 +99,9 @@ export class IrusForm extends LitElement {
             <button type="submit" name="submit">NAVIGATE</button>
           </p>
         </form>
+        <strong style="color: white">
+          Copyright &copy; Bogdan-Cristian Firuti and Razvan-Stefan Paduraru
+        </strong>
       </div>
     `;
   }
