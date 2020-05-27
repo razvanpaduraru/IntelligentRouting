@@ -64,15 +64,19 @@ class IrusTable2 extends LitElement {
   static get properties() {
     return {
       page: { type: String },
+      lat: { type: String },
+      lon: { type: String },
+      elv: { type: String },
+      timeGeo: { type: String },
     };
   }
 
   constructor() {
     super();
-    this.page = "";
   }
 
   render() {
+    console.log(this.lat, this.lon, this.elv, this.timeGeo);
     return html`
     <h1><strong>Civil Twilight Algorithm</strong></h2>
     <div class="container">

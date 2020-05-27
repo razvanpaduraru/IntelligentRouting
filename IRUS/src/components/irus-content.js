@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit-element";
 
 import "./irus-map";
 import "./irus-tables";
+import "./irus-weather";
 
 class IrusContent extends LitElement {
   static get styles() {
@@ -11,7 +12,7 @@ class IrusContent extends LitElement {
         display: flex;
         justify-content: space-between;
         padding: 2rem;
-        margin: 0 30%;
+        margin: 0 20%;
         font-size: 30px;
       }
 
@@ -23,10 +24,18 @@ class IrusContent extends LitElement {
         background-color: white;
         color: black;
         font-family: "Comic Sans MS", cursive, sans-serif;
+        margin: 0 -80%;
       }
 
       main {
         padding: 2rem;
+      }
+
+      #time {
+        width: 100%;
+        font-size: 20px;
+        color: white;
+        margin: 0 44.5%;
       }
 
       button {
@@ -46,12 +55,16 @@ class IrusContent extends LitElement {
   static get properties() {
     return {
       page: { type: String },
+      time: { type: String },
     };
   }
 
   constructor() {
     super();
     this.page = "";
+    setInterval(() => {
+      this.time = new Date().toLocaleString("ro");
+    }, 1000);
   }
 
   render() {
@@ -71,7 +84,7 @@ class IrusContent extends LitElement {
         </nav>
         <button @click=${this._onGoBack}>Back</button>
       </header>
-
+      <strong id="time">${this.time}</strong>
       <main>
         ${this._pageTemplate}
       </main>
@@ -92,7 +105,7 @@ class IrusContent extends LitElement {
       return html`<irus-map></irus-map>`;
     }
     if (this.page === "weather") {
-      return html`Weather`;
+      return html`<irus-weather></irus-weather>`;
     }
     if (this.page === "tables") {
       return html`<irus-tables></irus-tables>`;

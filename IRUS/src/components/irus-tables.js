@@ -9,7 +9,7 @@ class IrusTables extends LitElement {
     return css`
       select {
         font-size: 18px;
-        padding: 16px 20px;
+        padding: 14px 18px;
         border-radius: 4px;
         background-color: white;
         color: black;
@@ -35,15 +35,47 @@ class IrusTables extends LitElement {
   static get properties() {
     return {
       page: { type: String },
+      lat: { type: String },
+      lon: { type: String },
+      elv: { type: String },
+      timeGeo: { type: String },
     };
   }
 
   constructor() {
     super();
     this.page = "Table1";
+    this.lat = "";
+    this.lon = "";
+    this.elv = "";
+    this.timeGeo = "";
+  }
+
+  async _onGeoSuccess(position) {
+    this.lat = position.coords.latitude;
+    this.lon = position.coords.longitude;
+    this.timeGeo = new Date().toLocaleString("ro");
+    const baseElevation =
+      "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/elevation/json?locations=" +
+      `${this.lat}` +
+      "," +
+      `${this.lon}` +
+      "&key=AIzaSyBmdRgK-jwYAc8pA3BVp-7evgxTmjGLjBw";
+    const resultElevation = await fetch(`${baseElevation}`);
+    const dataElevation = await resultElevation.json();
+    this.elv = dataElevation.results[0].elevation;
+  }
+
+  _onGeoError() {
+    alert("Unable to retrieve current location");
   }
 
   render() {
+    navigator.geolocation.getCurrentPosition(
+      this._onGeoSuccess.bind(this),
+      this._onGeoError
+    );
+
     return html`
       <section>
         <strong>Table informations</strong>
@@ -74,13 +106,28 @@ class IrusTables extends LitElement {
 
   get _pageTemplate() {
     if (this.page === "Table1") {
-      return html`<irus-table-one></irus-table-one>`;
+      return html`<irus-table-one
+        .lat=${this.lat}
+        .lon=${this.lon}
+        .elv=${this.elv}
+        .timeGeo=${this.timeGeo}
+      ></irus-table-one>`;
     }
     if (this.page === "Table2") {
-      return html`<irus-table-two></irus-table-two>`;
+      return html`<irus-table-two
+        .lat=${this.lat}
+        .lon=${this.lon}
+        .elv=${this.elv}
+        .timeGeo=${this.timeGeo}
+      ></irus-table-two>`;
     }
     if (this.page === "Table3") {
-      return html`<irus-table-three></irus-table-three>`;
+      return html`<irus-table-three
+        .lat=${this.lat}
+        .lon=${this.lon}
+        .elv=${this.elv}
+        .timeGeo=${this.timeGeo}
+      ></irus-table-three>`;
     }
   }
 }
