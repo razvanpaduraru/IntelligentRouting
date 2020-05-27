@@ -3,7 +3,14 @@
   <head>
     <title>I.R.U.S.</title>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="mediumseagreen" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="globe-192.png" />
     <script src="dist/bundle.js"></script>
+    <script>
+      navigator.serviceWorker.register("sw.js");
+    </script>
     <style>
       html {
         background: url(https://thedailybanter.com/.image/t_share/MTM2NjQ0ODcwNjYyMDcxOTAz/moon-earth-planet-wallpapers-landscape.jpg)
